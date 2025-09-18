@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import SumForm from './components/sumform';
+import Result from './components/result';
+import FormBB from './components/form_b_b';
+import Result_b from './components/result_b_b';
 
-function App() {
+const App: React.FC = () => {
+  const [result, setResult] = useState<number>(0);
+  const [resultado, setResultado] = useState<string | null>(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: '20px' }}>
+      <h1>Calculadora</h1>
+      <SumForm onSum={setResult} /> 
+      <Result value={result} />
+      
+      <h1>Búsqueda Binaria</h1>
+      <FormBB onBuscar={setResultado} />
+      <Result_b value={resultado} />
     </div>
   );
-}
+};
 
 export default App;
